@@ -1,4 +1,5 @@
 摘要：http的方法/http的header字段/DNS查询过程/cdn相关知识/状态码/http和https/加密/缓存/网络模型/UDP和TCP
+
 #### http的方法
 - OPTIONS：查询服务器针对特定资源所支持的HTTP请求方法。
 - HEAD：与GET请求相一致的响应，只是不返回响应体。用于确认URL的有效性及资源更新的日期时间等。
