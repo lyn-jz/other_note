@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c023bea-f516-4c8f-a65e-016036bad23b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sql and  operation system.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computer_network.md" beforeDir="false" afterPath="$PROJECT_DIR$/computer_network.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql.md" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +46,7 @@
       <workItem from="1565765968522" duration="3784000" />
       <workItem from="1565921397404" duration="3329000" />
       <workItem from="1566033465642" duration="23367000" />
+      <workItem from="1566214001450" duration="349000" />
     </task>
     <servers />
   </component>
