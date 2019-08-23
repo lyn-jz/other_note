@@ -23,6 +23,7 @@ request header
 - Accept-Charset：用户代理支持的字符集及字符集的相对优先顺序。
 - Accept-Encoding：用户代理支持的内容编码及内容编码的优先级顺序。
 - Accept-Language：用户代理能够处理的自然语言集
+- user-agent :用户代理名称
 - Authorization：用户代理的认证信息
 - Expires, cache-control, Etag, last-modified
 
@@ -33,6 +34,7 @@ response header
 - Content-Type：服务器接收的媒体类型
 - Content-Encoding，Content-Language，Content-Length
 - if-none-match, if-modified-since
+- connection： keep-alive/closed
 
 #### 怎么实现即时通讯，websocket的原理
 1. 即时通讯：短轮询，长轮询，长连接，websocket。
@@ -123,23 +125,23 @@ CDN是内容分发网络。将源站内容分发至用户最近的节点，使�
 
 #### 网络七层模型，每层的作用、具体协议有哪些
  - 七层模型：
-   1.应用层 
+   1.应用层：
      - 作用： 为运用程序提供服务并规定运用程序通信过程中相关细节
      - 常见的协议： FTP（文本传输协议） HTTP（超文本传输协议） TFTP（简单文本传输协议）DNS（域名解析服务协议） DHCP（动态主机配置协议）
-   2.表示层
+   2.表示层：
      - 作用：负责数据格式的转换（包括加密），确保一方应用层数据能被另一方应用层理解
-   3.会话层
+   3.会话层：
      - 作用： 管理主机之间的会话进程，即负责建立、管理、终止进程之间的会话
    4.传输层：
      - 作用： 为端到端连接提供传输服务
      - 协议： TCP/UDP
-   5.网络层
+   5.网络层：
      - 作用： 将数据传输到目标地址，主要负责地址寻找和路由选择
      - 协议： IP/ICMP/
-   6.数据链路层
+   6.数据链路层：
      - 作用： 物理地址寻址、数据的成帧、流量控制、数据的检错、重发
      - 协议： ARP/RARP/PPP 
-   7.物理层
+   7.物理层：
      - 作用： 该层为上层协议提供了一个传输数据的物理媒体
  - http是应用层的，传输层用TCP或者UDP协议
 
