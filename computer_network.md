@@ -215,14 +215,16 @@ CDN是内容分发网络。将源站内容分发至用户最近的节点，使�
     同源策略是一种安全协议,指浏览器对不同源的脚本或文本的访问方式进行的限制。
 
 #### 跨域，跨域原理，跨域处理方法
- - JSONP：
-     - 原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。
-     - 优点是兼容性好，简单易用，支持浏览器与服务器双向通信。缺点是只支持GET请求。
- - CORS
-     - 后台通过设置Access-Control-Allow-Origin来进行的
- - nginx反向代理：设置proxy_pass
- - node中间件代理
- - postmessage：HTML5
+- JSONP：
+  - 原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。
+  - 优点是兼容性好，简单易用，支持浏览器与服务器双向通信。缺点是只支持GET请求。
+- CORS
+  - 后台通过设置Access-Control-Allow-Origin来进行的
+- nginx反向代理：设置proxy_pass
+- node中间件代理
+- document.domain：该方法只能用于二级域名相同的情况下
+- websocket
+- postmessage：一般情况下，一个窗口可以获得对另一个窗口的引用（比如 targetWindow = window.opener），然后在窗口上调用 targetWindow.postMessage()方法分发一个MessageEvent消息。这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息。
 
 #### http2优点/HTTP1.1与HTTP 2.0的主要区别
 
