@@ -6,7 +6,7 @@
 - 命名关键字参数，*,x1,x2.传入的的是一个键值是x1和x2的字典
 
  ##### 装饰器
- 装饰器本身是一个函数，它可以让其他函数在不做任何改变的情况下增加额外的功能
+ 装饰器本身是一个函数，它可以让其他函数在不做任何改变的情况下增加额外的功能，装饰器的返回值是一个函数对象
  ##### 闭包
  嵌套定义在函数内部的函数，使用了外部函数中的参数。最常见的时带参数的装饰器
  ##### 垃圾回收机制：引用计数、清除标记、分代回收
@@ -22,13 +22,12 @@
    多重继承时寻找继承的方法有两种
  - 封装：外部不用关注方法的实现细节
 
-##### super()的使用：调用父类的方法，super()可传入两个参数，class,self,也可不传
+##### super()的使用：调用父类的方法，super()可传入两个参数，class,self。
 1. 当类是经典类时，按照深度优先搜索的方式寻找。
-2. 当类是新式类时（继承了object类），按照广度优先搜搜的方式寻找。 python3中默认是使用新式类。
-3. super()中的self此时指的是子类实例，不是父类实例
-4. MRO 类的方法解析顺序表
-
-
+2. 当类是新式类时（继承了object类），使用广度优先和从左到右的原则去寻找（c3算法）。 python3中默认是使用新式类。
+3. super()中的self此时指的是子类实例，不是父类实例。它的作用是获取子类实例（self）的mro中class的下一个类
+4. MRO 类的方法解析顺序表，
+##### 浅拷贝vs 深拷贝 copy.copy()  copy.deepcopy()
 #### numpy
 1. np.array()  定义一个numpy数组（array），数组中的的数据必须是同一类型,有bool型，int型，float型，complex 型
 2. np.zeros(,dtype=)   np.eyes(), np.ones(),np.arange(),np.random.  np.linspace(0,1,5)指0到1之间均匀分配的5个数
@@ -51,6 +50,12 @@
 6.random.shuffle(list)
 
 #### 生成器和迭代器
+- 生成器
+  1. 函数里有yield关键字，无return 或者有无值return  静态角度。
+  2. 当调用迭代器函数时，不执行函数内部代码，而是返回一个迭代器对象；当返回的迭代器第一次调用next()方法时，生成器函数从头开始执行，遇到yield关键字时返回yield 后面的值
+     下次调用next方法时，从yield后的语句开始执行。
+- 迭代器：调用next方法返回容器的下一个元素
+  可迭代对象通过调用iter()方法实现迭代器，
 
 
 ##### 文件读写操作
@@ -74,7 +79,7 @@ for s in linelist:
 5. 回滚 db.rollback()
 6. 关闭光标对象 cursor.close()
 7. 关闭数据库连接  db.close()
-8. 批量操作 
+8. 获取结果 cursor.fetchall()、cursor.fetchone()、cursor.fetchmany(n)获取结果的前n行 默认是元组方式返回
 ##### 捕获异常
 try:
     可能发生异常的代码块放在此处
@@ -89,7 +94,12 @@ finally：
     无论有没有发生异常都会执行的代码
 所有的python内建异常类都是继承 Exception类，可继承该类来自定义异常 
  
-
+###### sys.path  模块搜索路径列表：代码主目录、pythonpath目录(pathonpath环境变量设置的目录)、pathon标准库、.py文件
+sys.path.append(BASE_DIR)
+同一目录下的模块可使用import 导入，不在同一目录下的要手动添加该路径 sys.path.append
+###### __new__ 和 __init__ 区别：
+- __new__ 创建实例实例并返回实例对象，是静态方法，构造方法
+- __init__ 初始化实例的一些属性，初始化方法
 #### pageObject 思想
 目的：将元素定位与元素操作分离，如果后期元素有变化，可降低维护成本，只需修改元素对象，不需修改测试用例
 分3层：对象库层、逻辑层、业务层
@@ -97,7 +107,14 @@ finally：
 - 逻辑层存放的是封装好的功能模块
 - 业务层存放的是测试用例
 
+##### selenium webdriver原理
+测试代码发送请求给浏览器驱动，浏览器驱动解析代码，解析后将相应的发送给浏览器，浏览器执行浏览器驱动发送到指令
+webdriver使用json wire protocal 协议，该协议是基于http协议，对http协议请求和响应部分的进一步规范。
+client（脚本代码）向http server（浏览器驱动）发送http请求，server根据请求来具体操控浏览器，浏览器执行测试指令并把结果返回给server，然后server将结果返回给脚本。
 
+### 显示等待和隐士等待：
+- WebDriverWait(driver,time).until(EC.visibilit_of_element_located((By.XPATH,定位方法))) 对一个元素，在指定timeout时间内，每隔一个时间间隔检测是否元素是否在，timeout时间后默认抛出 NoSuchElementException
+- driver.implicitly_wait(time)  全局等待，对每个元素都会设定等待时间，在等待时间内不停刷新页面直到找到元素
 
   
 
